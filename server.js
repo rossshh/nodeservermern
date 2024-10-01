@@ -14,7 +14,10 @@ const corsPolicy={
 const PORT = process.env.PORT || 5000;
 app.use(cors(corsPolicy));
 app.use(express.json());
-app.use("/api/auth/",authRoute);
+app.get('/hello', (req, res) => {
+  res.send('Hello, this is a GET API!');
+});
+// app.use("/api/auth/",authRoute);
 app.use(errorMiddleware((err, req, res, next) => {
   console.error("Error:", err);
   res.status(500).json({ message: "Internal Server Error" });
